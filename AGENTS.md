@@ -1,16 +1,21 @@
-# skills
+# Skills
 
 Purpose:
 - Markdown-only repository of reusable skills/prompts.
+- Used by traikker as system skills
+
+Folder structure:
+- structure aligns with traikker workflows
+    - Scoping: brainstorm -> requirements
+    - Execution: planning -> development
+    - Review: publish
+- general purpose skills go into general/
+- all other skills go into scratch/ by default
 
 Behavior:
 - No runtime code here.
-- Changes are usually content/schema changes to skill markdown files.
+- folder structure may not change except with explicit user permission
 - Preserve any frontmatter or format expected by the consuming agent system.
 
 When editing:
 - Keep skills concise, directive, and outcome-oriented.
-- Avoid code changes elsewhere unless the skill format/loader changes.
-
-Key file:
-- `README.md`
