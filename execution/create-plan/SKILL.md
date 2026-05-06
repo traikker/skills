@@ -48,7 +48,7 @@ Before presenting the plan, verify every acceptance criterion from the requireme
 
 ### 7. Present the plan
 
-Present the plan as structured markdown in the conversation. Use the template below.
+Present the plan as a JSON object in the conversation. Use the schema below.
 
 Then ask the user:
 - Does the story decomposition feel right? (too coarse / too fine)
@@ -58,49 +58,56 @@ Then ask the user:
 
 Iterate until the user approves.
 
-If the user wants to save the plan, ask where to write it (e.g. `plan.md`) and write it to that path.
+If the user wants to save the plan, ask where to write it (e.g. `plan.json`) and write it to that path.
 
-## Plan Template
+## JSON Schema
 
-```markdown
-# Implementation Plan — [Feature Name]
+Output a single JSON object with this structure:
 
-Built from: requirements.md | Codebase: [repo path]
-
-## Dependency overview
-
-Stories in recommended implementation order. Stories marked with ← depend on earlier stories.
-
----
-
-## Story 1: [Title]
-
-**Covers:** Use case(s) #[numbers]
-**Blocked by:** None
-
-### Tech guidance
-(Optional — include when the story needs architectural reminders)
-
-- [ ] Task 1
-- [ ] Task 2
-- [ ] Task 3
-
----
-
-## Story 2: [Title]
-
-**Covers:** Use case(s) #[numbers]
-**Blocked by:** Story 1
-
-### Tech guidance
-
-- [ ] Task 1
-- [ ] Task 2
-
----
-
-[Repeat for each story]
+```json
+{
+  "feature": "[Feature Name]",
+  "source": "requirements.md",
+  "codebase": "[repo path]",
+  "stories": [
+    {
+      "id": "S1",
+      "title": "[Title]",
+      "covers": [1, 2],
+      "tasks": [
+        "Task 1",
+        "Task 2",
+        "Task 3"
+      ],
+      "blockedBy": [],
+      "techGuidance": null
+    },
+    {
+      "id": "S2",
+      "title": "[Title]",
+      "covers": [3],
+      "tasks": [
+        "Task 1",
+        "Task 2"
+      ],
+      "blockedBy": ["S1"],
+      "techGuidance": "Reference ADR-004 for event bus pattern"
+    }
+  ]
+}
 ```
+
+### Field definitions
+- `feature` — short name of the feature
+- `source` — path to source requirements file
+- `codebase` — path to the scanned repository
+- `stories` — ordered array of stories (blockers first)
+- `stories[].id` — unique identifier like `S1`, `S2`
+- `stories[].title` — one-line story title
+- `stories[].covers` — array of use case numbers from requirements
+- `stories[].tasks` — actionable steps, ordered by implementation sequence
+- `stories[].blockedBy` — array of story IDs that must complete first; `[]` if none
+- `stories[].techGuidance` — architectural reminder string or `null`
 
 ## Rules
 
@@ -108,4 +115,6 @@ Stories in recommended implementation order. Stories marked with ← depend on e
 - Acceptance criteria from requirements are implicitly carried by each story via its tasks
 - Edge cases must appear as tasks in whichever story handles that concern
 - The full story set must collectively satisfy every goal and acceptance criterion in the requirements
+- `blockedBy` is an array of story IDs that must complete before this story, empty array if none
+- `techGuidance` is a string or `null` if not needed
 - Do not write files unless the user explicitly asks to save the plan
