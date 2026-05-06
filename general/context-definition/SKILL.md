@@ -1,21 +1,17 @@
 ---
 name: context-definition
-description: >
-  Generate a CONTEXT.md file that gives an AI agent fast navigational shortcuts
-  through a codebase. Captures domain language, relationships, and file entry
-  points per concept. Use when the user asks to create or initialize CONTEXT.md,
-  needs a "map" of a codebase for an agent, or mentions context pointers.
+description: Create or refresh `<project-root>/.agent/CONTEXT.md` as a concise domain map (terms, relationships, canonical entry points) for fast agent navigation.
 ---
 
 # Context Definition
 
-Generate `/agent/CONTEXT.md` at the repo root. It's a navigational hub — not a full
+Generate `<project-root>/.agent/CONTEXT.md`. It's a navigational hub — not a full
 documentation dump. Goal: let an agent understand a complex system in one read,
 then jump to the right source file.
 
 ## Staleness
 
-Check existing `CONTEXT.md` for `last-modified` date. Compare to latest git
+Check existing `<project-root>/.agent/CONTEXT.md` for `last-modified` date. Compare to latest git
 commit.
 
 ## Structure
@@ -80,12 +76,12 @@ _Avoid_: Alias1, Alias2
 ## Process
 
 1. **Scan**: Read `AGENTS.md`, `README.md`, package.json entry points, and any
-   existing `agent/` to understand the project.
+   existing `.agent/` to understand the project.
 2. **Walk**: Explore source files to discover domain entities, modules, and their
    relationships. Focus on interfaces and naming patterns.
 3. **Extract**: Identify domain-specific terms. Note aliases used in code that
    contradict each other.
-4. **Reconcile** (if `CONTEXT.md` exists):
+4. **Reconcile** (if `<project-root>/.agent/CONTEXT.md` exists):
    - If last-modified is >2 weeks behind latest commit, flag it to the user.
    - For every term in the Language section, verify the linked file still exists
      and the description remains accurate.
@@ -94,7 +90,7 @@ _Avoid_: Alias1, Alias2
    - Walk primary source directories for routes, components, or utilities not
      yet mentioned.
    - Note removed references (deleted files, renamed modules).
-5. **Write**: Produce `CONTEXT.md` following the structure above.
+5. **Write**: Produce `<project-root>/.agent/CONTEXT.md` following the structure above.
 6. **Verify**: Cross-check that every route or public entry in the application
    directory is accounted for. Ensure no referenced path is stale. Confirm you
    haven't included generic tooling terms that belong in framework docs, not
@@ -104,11 +100,11 @@ _Avoid_: Alias1, Alias2
 ## Cases
 
 **Covers**:
-- Initializing a new codebase that lacks CONTEXT.md
-- Refreshing a stale CONTEXT.md
+- Initializing a new codebase that lacks `<project-root>/.agent/CONTEXT.md`
+- Refreshing a stale `<project-root>/.agent/CONTEXT.md`
 - Extracting domain language from an unfamiliar repo
 
 **Does not cover**:
-- Updating CONTEXT.md after code changes — that is a separate skill (commit-time update)
+- Updating `<project-root>/.agent/CONTEXT.md` after code changes — that is a separate skill (commit-time update)
 - Per-module context files — this creates a single repo-root hub
 - Architecture deepening suggestions — see `architecture` skill for that

@@ -1,6 +1,6 @@
 ---
 name: brainstorm-mode
-description: Enter brainstorming mode. Guides the user through iterative questioning to clarify and shape an idea into a structured concept. Use when user wants to brainstorm, flesh out an idea, explore a concept, or says "brainstorm" or "brainstorm mode".
+description: Run an iterative brainstorming loop. ask focused questions, tighten scope, and end with a structured concept summary.
 ---
 
 # Brainstorm Mode
@@ -27,6 +27,7 @@ Exit condition:
 Rules:
 - Do not exit until user signals completion
 - Do not write files unless explicitly requested
+- If writing a markdown file is requested, write it under `/<project-root>/.agent/`
 - Stay in the mode even if the user diverges — gently steer back
 - Keep questions to one or two at a time
 - Final output must be the structured summary before exiting

@@ -1,6 +1,6 @@
 ---
 name: write-code
-description: Execute code changes via TDD. Delegates all coding standards to `coding-standards` skill. Must read CONTEXT.md first, write test before code, and update CONTEXT.md with new terms. Use when writing new code, implementing features, fixing bugs, or any task requiring code changes.
+description: Implement code changes with strict TDD (RED→GREEN→REFACTOR), enforcing `coding-standards` and maintaining `<project-root>/.agent/CONTEXT.md`.
 ---
 
 # Write Code
@@ -9,7 +9,7 @@ All coding standards are defined by the [`coding-standards`](../coding-standards
 
 ## Pre-flight
 
-1. Read `CONTEXT.md`. If missing, create it following `context-definition` skill discipline. No code without it.
+1. Read `<project-root>/.agent/CONTEXT.md`. If missing, create it following `context-definition` skill discipline. No code without it.
 2. Read applicable ADRs in `docs/adr/` (if any exist).
 3. Identify which modules, seams, and adapters are involved.
 4. Read [`coding-standards`](../coding-standards/SKILL.md) — enforce every standard.
@@ -45,8 +45,8 @@ All coding standards are defined by the [`coding-standards`](../coding-standards
 - Replace old tests with tests at the new interface — per [`coding-standards`](../coding-standards/SKILL.md) §8.
 - Mock only at system boundaries.
 
-### 6. Update CONTEXT.md
-- New domain term coined? Add to `CONTEXT.md` now — same discipline as `context-definition` skill.
+### 6. Update `<project-root>/.agent/CONTEXT.md`
+- New domain term coined? Add to `<project-root>/.agent/CONTEXT.md` now — same discipline as `context-definition` skill.
 - Fuzzy term sharpened during implementation? Update its definition.
 - New module-seam relationship? Record it.
 

@@ -19,3 +19,4 @@ Behavior:
 
 When editing:
 - Keep skills concise, directive, and outcome-oriented.
+- Any markdown file a skill writes for a target project must be placed under `/<project-root>/.agent/` (e.g., `<project-root>/.agent/CONTEXT.md`, `<project-root>/.agent/requirements.md`).

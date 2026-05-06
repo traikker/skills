@@ -1,6 +1,6 @@
 ---
 name: requirements-mode
-description: Enter requirements mode. Guides the user through iterative clarification to produce a comprehensive, agent-executable requirements document. Use after brainstorming, or when user wants to define requirements, says "requirements mode", or needs detailed use cases and acceptance criteria.
+description: Run an iterative requirements loop that resolves ambiguity and outputs a complete, agent-executable requirements document.
 ---
 
 # Requirements Mode
@@ -26,7 +26,8 @@ Exit condition:
 
 Rules:
 - Do not exit until user signals completion
-- Do not write to `requirements.md` unless explicitly requested (output inline by default)
+- Do not write to `<project-root>/.agent/requirements.md` unless explicitly requested (output inline by default)
+- If writing a markdown file is requested, write it under `/<project-root>/.agent/`
 - Stay in the mode even if the user diverges — gently steer back
 - Keep questions to one or two at a time
 - Final output must be the complete requirements document before exiting

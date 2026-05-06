@@ -1,6 +1,6 @@
 ---
 name: coding-standards
-description: Enforce coding standards! deep interfaces, orthogonal design, seams, DRY, deliberate naming, design-by-contract, testability. Use when writing code, reviewing code, or refactoring to ensure good architecture.
+description: Enforce architecture-first coding standards. deep modules, orthogonality, seam placement, DRY, contracts, and interface-level testing.
 ---
 
 # Coding Standards
@@ -73,7 +73,7 @@ Code is only done when tests pass.
 
 ### Writing new code
 
-1. Read [language.md](language.md) terminology. Read `CONTEXT.md` for domain vocabulary.
+1. Read [language.md](language.md) terminology. Read `<project-root>/.agent/CONTEXT.md` for domain vocabulary.
 2. Identify the seam — where does a dependency vary?
 3. Define the interface (types, invariants, error modes, ordering).
 4. Verify depth: does the interface hide meaningful behaviour? Deletion test.

@@ -1,6 +1,6 @@
 ---
 name: coding-mode
-description: End-to-end coding mode. Accepts a story (optionally with a task checklist), creates a feature branch, implements via write-code skill, ensures tests pass and CONTEXT.md is updated, then squash merges back to main. Use when user wants to implement a story or feature end-to-end, says "coding mode" or "implement this story".
+description: Run end-to-end feature delivery. branch from main, implement via `write-code`, keep tests green, update `<project-root>/.agent/CONTEXT.md`, then squash-merge to main.
 ---
 
 # Coding Mode
@@ -22,7 +22,7 @@ Loop:
 1. For each checklist item (or the single story if no checklist):
    - Execute the `write-code` skill to implement the code
    - Ensure all tests pass after each item
-   - Ensure `CONTEXT.md` is updated per `write-code` discipline
+   - Ensure `<project-root>/.agent/CONTEXT.md` is updated per `write-code` discipline
 2. After all items complete, run full test suite — fix until green
 
 ## Phase 3 — Check
@@ -65,7 +65,7 @@ Agent: [creates branch `add-user-signup-endpoint`, runs write-code per checklist
 **Covers**:
 - Single story with or without a subtask checklist
 - Branch creation, TDD implementation, testing, committing, squash merge
-- CONTEXT.md updates as part of write-code discipline
+- `<project-root>/.agent/CONTEXT.md` updates as part of write-code discipline
 - Auto conflict resolution during merge
 
 **Does not cover**:

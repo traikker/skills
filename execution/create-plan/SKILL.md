@@ -1,6 +1,6 @@
 ---
 name: create-plan
-description: Transform a requirements document into a detailed implementation plan of stories with tasks, dependencies, and architecture guidance. Use when user wants to create an implementation plan, turn requirements into stories, or needs a story-based breakdown of work from a requirements document.
+description: Convert requirements into executable stories with tasks, dependencies, and targeted technical guidance for coding execution.
 ---
 
 # Create Plan
@@ -11,15 +11,15 @@ Transform requirements provided by the user and codebase context into a detailed
 
 ### 1. Receive requirements
 
-- If the user points to a `requirements.md` file, read it
+- If the user points to a requirements file (commonly `<project-root>/.agent/requirements.md`), read it
 - Otherwise, accept the requirements from the conversation context or ask the user to paste them
 - Internalise the full requirements — goals, non-goals, user stories, use cases, acceptance criteria, edge cases, and dependencies
 
 ### 2. Examine codebase context
 
 - If the user specifies a repo path, scan it. Otherwise ask where the codebase lives.
-- Check for `/agent/CONTEXT.md` in the repo root — if present, read it for architectural navigational shortcuts
-- Check `agent/adr/` directory — read any ADRs for past architectural decisions
+- Check for `<project-root>/.agent/CONTEXT.md` — if present, read it for architectural navigational shortcuts
+- Check `<project-root>/.agent/adr/` directory — read any ADRs for past architectural decisions
 - Scan the repo structure briefly (top-level directories, key modules) to understand the existing shape of the code
 - Note any patterns, conventions, or constraints that stories must respect
 
@@ -41,7 +41,7 @@ Transform requirements provided by the user and codebase context into a detailed
 ### 5. Add tech guidance where needed
 
 - For stories that touch architectural boundaries, introduce new patterns, or risk drifting from best practices, include a **Tech guidance** section
-- Reference specific ADRs, existing patterns, or CONTEXT.md entries
+- Reference specific ADRs, existing patterns, or `<project-root>/.agent/CONTEXT.md` entries
 - Keep guidance concise — it supplements, not replaces, the story's tasks
 
 ### 6. Coverage check
@@ -82,7 +82,7 @@ Then ask the user:
 
 Iterate until the user approves.
 
-If the user wants to save the plan, ask where to write it (e.g. `plan.json`) and write it to that path.
+If the user wants to save the plan, ask where to write it (e.g. `plan.json`) and write it to that path. If they request markdown output, default to `<project-root>/.agent/` (for example `<project-root>/.agent/plan.md`).
 
 ## JSON Schema
 
@@ -91,7 +91,7 @@ Output a single JSON object with this structure:
 ```json
 {
   "feature": "[Feature Name]",
-  "source": "requirements.md",
+  "source": ".agent/requirements.md",
   "codebase": "[repo path]",
   "stories": [
     {

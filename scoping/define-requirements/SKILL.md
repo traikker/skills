@@ -1,6 +1,6 @@
 ---
 name: define-requirements
-description: Transform a brainstorm summary or brief into a comprehensive requirements definition with use cases, acceptance criteria, and edge cases. Use after brainstorming, or when you have a vague idea and need to turn it into agent-executable requirements. Replaces to-prd and requirements-gathering.
+description: Turn a brief or brainstorm summary into clear, testable requirements with use cases, acceptance criteria, edge cases, and dependencies.
 ---
 
 # Define Requirements
@@ -13,7 +13,7 @@ Take a brainstorm result or brief idea and expand it into a requirements documen
 
 2. **Resolve ambiguities** — use the `grill-me` skill to relentlessly clarify open questions, assumptions, scope gaps, and edge cases. Keep asking until the requirements are unambiguous and complete. Document user decisions as they're made.
 
-3. **Produce the requirements document** — output it inline. Only write to a file if the user explicitly requests one.
+3. **Produce the requirements document** — output it inline. Only write to a file if the user explicitly requests one. If writing markdown, place it under `/<project-root>/.agent/` (default: `<project-root>/.agent/requirements.md`).
 
 ## Requirements Document Template
 

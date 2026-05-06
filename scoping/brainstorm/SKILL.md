@@ -1,6 +1,6 @@
 ---
 name: brainstorm
-description: Brainstorm and clarify an idea or brief through guided questioning. Distills vague thoughts into a clear, structured concept ready for planning. Use when user has an idea they want to flesh out, needs help thinking through scope, or wants to explore a concept before committing to a document.
+description: Clarify a rough idea through focused questions and produce a concise structured summary with scope and open questions.
 ---
 
 # Brainstorm
@@ -42,7 +42,7 @@ When the user signals they're ready (or you sense clarity), produce:
 **Open questions:** Remaining ambiguities.
 ```
 
-Offer to write this to a file only if requested.
+Offer to write this to a file only if requested. If markdown, default to `/<project-root>/.agent/`.
 
 ## Tone
 
