@@ -1,6 +1,6 @@
 ---
 name: write-code
-description: Implement code changes with strict TDD (RED→GREEN→REFACTOR), enforcing `coding-standards` and maintaining `<project-root>/.agent/CONTEXT.md`.
+description: Implement code changes with strict TDD (RED→GREEN→REFACTOR), enforcing `coding-standards`, maintaining `<project-root>/.agent/CONTEXT.md`, and refreshing required architecture diagrams in `<project-root>/.agent/diagrams/*.d2` after structural changes.
 ---
 
 # Write Code
@@ -49,6 +49,15 @@ All coding standards are defined by the [`coding-standards`](../coding-standards
 - New domain term coined? Add to `<project-root>/.agent/CONTEXT.md` now — same discipline as `context-definition` skill.
 - Fuzzy term sharpened during implementation? Update its definition.
 - New module-seam relationship? Record it.
+
+### 7. Mandatory final step: refresh architecture diagrams
+- If implementation changed file structure, module boundaries, imports/exports, dependencies, or public interfaces, rebuild all diagram files as the last coding step.
+- Update:
+  - `<project-root>/.agent/diagrams/modules.d2`
+  - `<project-root>/.agent/diagrams/relationships.d2`
+  - `<project-root>/.agent/diagrams/components.d2`
+- Derive diagrams from current code and interface structure, not stale docs.
+- This step is mandatory before considering coding work complete.
 
 ## Cases
 

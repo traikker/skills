@@ -5,9 +5,7 @@ description: Create or refresh `<project-root>/.agent/CONTEXT.md` as a concise d
 
 # Context Definition
 
-Generate `<project-root>/.agent/CONTEXT.md`. It's a navigational hub — not a full
-documentation dump. Goal: let an agent understand a complex system in one read,
-then jump to the right source file.
+Generate `<project-root>/.agent/CONTEXT.md`. It's a navigational hub — not a full documentation dump. Goal: let an agent understand a complex system in one read, then jump to the right source file.
 
 ## Staleness
 
