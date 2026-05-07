@@ -9,11 +9,25 @@ description: Maintains D2 architecture diagrams from repository file and interfa
 
 When structural code changes land:
 1. Inspect changed files and dependency/interface changes
-2. Rebuild all diagrams:
-   - `.agent/diagrams/modules.d2`
-   - `.agent/diagrams/relationships.d2`
-   - `.agent/diagrams/components.d2`
+2. Rebuild all diagrams: `.agent/diagrams.d2`
+3. `.agent/diagrams.d2` has 3 sections / labels:
+   - Modules
+   - Components
+   - Relationships
 3. Keep diagrams consistent with current code
+
+## Structure
+```d2
+diagram_1: "Modules" {
+}
+
+diagram_2: "Components" {
+}
+
+diagram_3: "Relationships" {
+}
+
+```
 
 ## Triggers
 
@@ -34,20 +48,20 @@ Collect:
 - changed interfaces/contracts between modules
 
 ### 2. Rebuild modules diagram
-Update `.agent/diagrams/modules.d2` to show:
+Update `modules` section in `.agent/diagrams.d2` to show:
 - top-level modules/subsystems
 - ownership/grouping by directory or package
 - major public entry points
 
 ### 3. Rebuild relationships diagram
-Update `.agent/diagrams/relationships.d2` to show:
+Update `relationships` section in `.agent/diagrams.d2` to show:
 - dependency edges between modules
 - direction of use
 - key interface boundaries
 - external systems/packages if architecturally relevant
 
 ### 4. Rebuild components diagram
-Update `.agent/diagrams/components.d2` to show:
+Update `components` section in `.agent/diagrams.d2` to show:
 - main runtime/build components
 - internal responsibilities
 - interfaces connecting components
@@ -63,7 +77,7 @@ Update `.agent/diagrams/components.d2` to show:
 
 ## Output standard
 
-For each `.d2` file:
+For each label in the `.d2` file:
 - valid D2 syntax
 - concise labels
 - consistent terminology
