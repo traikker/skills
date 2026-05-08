@@ -16,6 +16,7 @@ Make every module **deep** — high leverage behind a simple interface. Before w
 - What behaviour does the caller need? Minimise the interface to that.
 - Run the **deletion test**: if you delete the module, does complexity vanish (pass-through) or reappear at N callers (earning its keep)?
 - **The interface is the test surface.** Tests cross the same seam as callers.
+- Use a directory to group multiple related files in 1 module
 
 ### 2. Orthogonality
 
